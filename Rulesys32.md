@@ -20,3 +20,6 @@ ContextImageFileName IN ("*\\programdata\\*", "*\\users\\*", "*\\windows\\temp\\
 
     , values(impersonated_as) AS impersonated_as
    
+
+(TargetFileName="*\\system32\\*.dll" OR TargetFileName="*\\syswow64\\*.dll")
+| regex TargetFileName="(?i)\\\\(system32|syswow64)\\\\[^\\\\]+\\.dll$"
