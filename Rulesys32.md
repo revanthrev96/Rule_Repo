@@ -23,3 +23,5 @@ ContextImageFileName IN ("*\\programdata\\*", "*\\users\\*", "*\\windows\\temp\\
 
 (TargetFileName="*\\system32\\*.dll" OR TargetFileName="*\\syswow64\\*.dll")
 | regex TargetFileName="(?i)\\\\(system32|syswow64)\\\\[^\\\\]+\\.dll$"
+
+``` impersonated_as: shows WHICH privileged identity the process borrowed (impersonated) to write the DLL, based on FileOperatorSid. S-1-5-18 = SYSTEM (strongest privilege-escalation signal, e.g. potato-style attacks). S-1-5-80-956008885-... = TrustedInstaller. SID ending in -500 = built-in Administrator (even if renamed). Anything else = other admin or backup-operator account; check the account name. Used only for triage priority. ```
